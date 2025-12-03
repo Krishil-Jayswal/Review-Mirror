@@ -1,6 +1,6 @@
 # Review Mirror: Sentiment Drift Detection System
 
-A deep learning-based system for detecting and analyzing sentiment drift in user reviews over time. This project implements a self-supervised contrastive learning approach to identify users and products whose opinion patterns have shifted significantly.
+A Contrastive Learning Framework for Detecting Longitudinal User Drift in E-Commerce Reviews. This project implements a self-supervised contrastive learning approach to identify users and products whose opinion patterns have shifted significantly.
 
 ## 📋 Table of Contents
 - [Overview](#overview)
