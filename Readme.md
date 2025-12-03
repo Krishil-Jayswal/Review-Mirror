@@ -47,7 +47,7 @@ Review Mirror analyzes temporal patterns in user reviews to detect **sentiment d
 
 ### Step 1: Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/Krishil-Jayswal/Review-Mirror.git
 cd Review-Mirror
 ```
 
@@ -82,7 +82,6 @@ Review-Mirror/
 │
 ├── main.ipynb              # Main Jupyter notebook with full pipeline
 ├── Readme.md               # This file
-├── main.tex                # LaTeX documentation
 │
 ├── outputs/                # Generated output files (created automatically)
 │   ├── sscd_proj_head.pth              # Trained projection head model
@@ -98,19 +97,14 @@ Review-Mirror/
 
 ### Quick Start
 
-1. **Open the Notebook**
-   ```bash
-   jupyter notebook main.ipynb
-   ```
-
-2. **Configure Parameters** (Cell 3)
+1. **Configure Parameters** (Cell 3)
    ```python
    DATA_PATH = "yelp_academic_dataset_review.json"
    MIN_REVIEWS_PER_USER = 30
    MAX_REVIEWS_PER_USER = 200
    ```
 
-3. **Run All Cells** in sequence (Runtime: ~30-60 minutes depending on hardware)
+2. **Run All Cells** in sequence
 
 ### Step-by-Step Walkthrough
 
@@ -122,11 +116,6 @@ Review-Mirror/
   - Creates normalized ratings (-1 to +1 scale)
   - Computes temporal features
 
-**Expected Output**: 
-```
-✅ Retained XXX,XXX reviews across X,XXX active users.
-```
-
 #### Phase 2: Embedding Generation (Cells 6-10)
 - **Purpose**: Convert review text to semantic vectors
 - **What happens**:
@@ -135,12 +124,7 @@ Review-Mirror/
   - Generates 768-dimensional embeddings
   - Normalizes vectors
 
-**Expected Output**:
-```
-✅ Done! Computed XXXX embeddings on device cuda:0 for 1000 users.
-```
-
-**⚠️ Note**: This is the most time-consuming step (~20-40 minutes on GPU)
+**⚠️ Note**: This is the most time-consuming step
 
 #### Phase 3: Drift Analysis (Cells 11-14)
 - **Purpose**: Compute drift metrics per user
@@ -149,11 +133,6 @@ Review-Mirror/
   - Detects changepoints using Pelt algorithm
   - Measures semantic drift (first vs last embedding)
   - Combines metrics into drift score
-
-**Expected Output**:
-```
-✅ Drift computed for XXX users
-```
 
 #### Phase 4: Visualization (Cells 15-18)
 - **Purpose**: Visualize drift patterns
@@ -174,12 +153,6 @@ Review-Mirror/
   - Trains projection head with NT-Xent loss
   - Learns to distinguish drifted vs stable users
   - Saves model to `outputs/sscd_proj_head.pth`
-
-**Expected Output**:
-```
-[sscd][epoch 8/8] avg loss 0.XXXX
-[sscd] training complete and saved
-```
 
 #### Phase 6: Detector Training (Cells 28-31)
 - **Purpose**: Build comprehensive drift classifier
